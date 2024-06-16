@@ -1,0 +1,14 @@
+C:\Users\ekkek\TurnitTestExercise\bin\Debug\net8.0\TurnitTestExercise.exe
+C:\Users\ekkek\TurnitTestExercise\bin\Debug\net8.0\TurnitTestExercise.deps.json
+C:\Users\ekkek\TurnitTestExercise\bin\Debug\net8.0\TurnitTestExercise.runtimeconfig.json
+C:\Users\ekkek\TurnitTestExercise\bin\Debug\net8.0\TurnitTestExercise.dll
+C:\Users\ekkek\TurnitTestExercise\bin\Debug\net8.0\TurnitTestExercise.pdb
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.AssemblyInfoInputs.cache
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.AssemblyInfo.cs
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.csproj.CoreCompileInputs.cache
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.dll
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\refint\TurnitTestExercise.dll
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.pdb
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.genruntimeconfig.cache
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\ref\TurnitTestExercise.dll
