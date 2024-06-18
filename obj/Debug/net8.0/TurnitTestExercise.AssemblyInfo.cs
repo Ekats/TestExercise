@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TurnitTestExercise")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d65dbe233127faa62d4f019619e257e3ce19289")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("TurnitTestExercise")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TurnitTestExercise")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

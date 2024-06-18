@@ -1,4 +1,6 @@
-﻿namespace TurnitTestExercise
+﻿using System.Diagnostics;
+
+namespace TurnitTestExercise
 {
     class Program
     {
@@ -24,10 +26,12 @@
             while (true)
             {
                 Console.Write("> ");
-                var input = (Console.ReadLine() ?? string.Empty).Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                if (input.Length == 0) continue;
+                //if string is not null, split input string into array of words, ignore extra spaces
+                var input = (Console.ReadLine() ?? string.Empty).Split(' ', StringSplitOptions.RemoveEmptyEntries); 
+                if (input.Length == 0) continue;    //User input is empty -> next iteration
 
                 var command = input[0].ToLower();
+                //take in additional words as parameters
                 var parameters = input.Length > 1 ? input[1..] : Array.Empty<string>();
 
                 if (commands.ContainsKey(command))
@@ -48,6 +52,7 @@
             }
         }
 
+        //Process the file and run CalculateBusiestPeriod if a timetable exists
         static void ProcessTimeTable()
         {
             var times = ReadTimesFromFile();
@@ -109,12 +114,11 @@
             int maxBreaks = 0;          //All time highest number of breaks
             bool busiestPeriod = false;  //Are we currently tracking the busiest period?
 
-            var busiestPeriods = new List<Tuple<TimeSpan, int, TimeSpan>>();
-            TimeSpan previousStart = TimeSpan.MinValue;
+            var busiestPeriods = new List<Tuple<TimeSpan, int, TimeSpan>>();    //List of Tuples for containing the final start times, breaks number and end times
+            TimeSpan previousStart = TimeSpan.MinValue; //Start time of the previous for loop iteration
             
             foreach (var ev in breakEvents)
             {
-                Console.WriteLine($"{ev.Item1} | {ev.Item2}");
                 currentBreaks += ev.Item2;
                 if (ev.Item2 == 1) // Start of a break
                 {
@@ -122,7 +126,7 @@
                     {
                         maxBreaks = currentBreaks;
                         busiestPeriod = true;
-                        busiestPeriods.Clear();
+                        busiestPeriods.Clear(); //Clear the list if this is the new busiest period
                     }
                     else if (currentBreaks == maxBreaks)  //Equal to the busiest period so far
                     {
@@ -135,8 +139,9 @@
                 {
                     if (currentBreaks <= maxBreaks && busiestPeriod)    //End of busiest period, currentBreaks < maxBreaks
                     {
+                        //Add new busiest period to the list, doing it here to get the correct end time
                         busiestPeriods.Add(Tuple.Create(previousStart, maxBreaks, ev.Item1));
-                        // Update the end time and reset the busiestPeriod bool
+                        //Reset the busiestPeriod bool
                         busiestPeriod = false;
                     }
                 }
