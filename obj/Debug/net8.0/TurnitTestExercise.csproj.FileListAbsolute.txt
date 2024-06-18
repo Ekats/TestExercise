@@ -12,3 +12,4 @@ C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\refint\TurnitTestExercise.dll
 C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.pdb
 C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.genruntimeconfig.cache
 C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\ref\TurnitTestExercise.dll
+C:\Users\ekkek\TurnitTestExercise\obj\Debug\net8.0\TurnitTestExercise.sourcelink.json
