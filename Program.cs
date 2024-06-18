@@ -83,7 +83,7 @@
             return times;
         }
 
-        //Look for periods with the most overlapping breaks. Currently supports only one period, outputs the first one it found, could add more with a list
+        //Look for periods with the most overlapping breaks.
         static void CalculateBusiestPeriod(List<Tuple<TimeSpan, TimeSpan>> breakPeriods)
         {
             var breakEvents = new List<Tuple<TimeSpan, int>>();
@@ -107,8 +107,6 @@
             
             int currentBreaks = 0;  //Current number of active breaks
             int maxBreaks = 0;          //All time highest number of breaks
-            TimeSpan maxStart = TimeSpan.MinValue;  //Start time of busiest period
-            TimeSpan maxEnd = TimeSpan.MinValue;    //End time of busiest period
             bool busiestPeriod = false;  //Are we currently tracking the busiest period?
 
             var busiestPeriods = new List<Tuple<TimeSpan, int, TimeSpan>>();
@@ -116,47 +114,41 @@
             
             foreach (var ev in breakEvents)
             {
+                Console.WriteLine($"{ev.Item1} | {ev.Item2}");
                 currentBreaks += ev.Item2;
                 if (ev.Item2 == 1) // Start of a break
                 {
                     if (currentBreaks > maxBreaks)  //Busiest period so far
                     {
                         maxBreaks = currentBreaks;
-                        maxStart = ev.Item1;    
                         busiestPeriod = true;
                         busiestPeriods.Clear();
                     }
                     else if (currentBreaks == maxBreaks)  //Equal to the busiest period so far
                     {
-                        maxBreaks = currentBreaks;
-                        maxStart = ev.Item1;    
+                        maxBreaks = currentBreaks; 
                         busiestPeriod = true;
                     }
                     previousStart = ev.Item1;   //Set previous start to carry over for if next iteration is end of break
                 }
                 else // End of a break
                 {
-                    if (currentBreaks == maxBreaks)
-                    {
-                        maxEnd = ev.Item1;
-                    }
-                    else if (currentBreaks <= maxBreaks && busiestPeriod)    //End of busiest period, currentBreaks < maxBreaks
+                    if (currentBreaks <= maxBreaks && busiestPeriod)    //End of busiest period, currentBreaks < maxBreaks
                     {
                         busiestPeriods.Add(Tuple.Create(previousStart, maxBreaks, ev.Item1));
-                        // Update the end time and reset currentStart
-                        maxEnd = ev.Item1;
+                        // Update the end time and reset the busiestPeriod bool
                         busiestPeriod = false;
                     }
                 }
             } 
             
             Console.WriteLine($"Current File: {filePath}, Total Drivers: {breakPeriods.Count}");
+
+            //Loop through and print all busiest periods
             foreach (var period in busiestPeriods)
             {
                 Console.WriteLine($"Busiest period: {period.Item1:hh\\:mm}-{period.Item3:hh\\:mm} with {period.Item2} drivers on break. Free drivers: {breakPeriods.Count - maxBreaks}");
             }
-            
-            // Console.WriteLine($"Busiest period: {maxStart:hh\\:mm}-{maxEnd:hh\\:mm} with {maxBreaks} drivers on break. Free drivers: {breakPeriods.Count - maxBreaks}");
         }
 
         static void AddTime(string[] parameters, string usage)  //Add new entry to break time table
